@@ -1,2 +1,8 @@
 - type: Tag
   id: Crate
+
+- type: Tag
+  id: CartridgeNothing
+
+- type: Tag
+  id: SpeedLoaderNothing

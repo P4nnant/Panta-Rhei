@@ -7,3 +7,17 @@
       amount: 1
   products:
     Water: 2
+
+- type: reaction
+  id: CreateNothing
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  reactants:
+    Flour:
+      amount: 10
+    Nothing:
+      amount: 10
+  effects:
+  - !type:SpawnEntity
+    entity: IngotNothing1

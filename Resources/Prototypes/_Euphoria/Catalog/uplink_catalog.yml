@@ -1,0 +1,16 @@
+﻿- type: listing
+  id: uplinkRevolverNothingFake
+  name: uplink-revolver-nothing-fake-name
+  description: uplink-revolver-nothing-fake-desc
+  productEntity: RevolverNothingFake
+  discountCategory: rareDiscounts
+  discountDownTo:
+    Telecrystal: 2
+  cost:
+    Telecrystal: 3
+  categories:
+  - UplinkJob
+  conditions:
+  - !type:BuyerJobCondition
+    whitelist:
+    - Mime

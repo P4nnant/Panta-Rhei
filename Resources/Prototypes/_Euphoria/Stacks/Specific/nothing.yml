@@ -1,0 +1,6 @@
+﻿- type: stack
+  parent: BaseMediumStack
+  id: Nothing
+  name: stack-nothing
+  icon: { sprite: "/Textures/Objects/Materials/ingots.rsi", state: nothing }
+  spawn: IngotNothing1

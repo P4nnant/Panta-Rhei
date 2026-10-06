@@ -2258,7 +2258,7 @@
   conditions:
   - !type:BuyerJobCondition
     whitelist:
-    - Mime
+    #- Mime ## euphoria - commented out now that mime has their own, more thematically fitting version
     - Clown
 
 - type: listing

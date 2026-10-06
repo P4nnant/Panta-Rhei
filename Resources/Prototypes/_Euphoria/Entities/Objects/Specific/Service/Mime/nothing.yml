@@ -1,0 +1,233 @@
+﻿# nothing (the material)
+- type: entity
+  parent: IngotBase
+  id: IngotNothing
+  name: nothing
+  description: It's nothing! Experienced mimes can make fun things out of this.
+  suffix: Full
+  components:
+  - type: Material
+  - type: Stack
+    stackType: Nothing
+    baseLayer: base
+    layerStates:
+    - nothing
+    - nothing_2
+    - nothing_3
+  - type: Sprite
+    sprite: _Euphoria/Objects/Materials/nothing.rsi
+    state: nothing_3
+    layers:
+    - state: nothing_3
+      map: ["base"]
+  - type: Item
+    heldPrefix: nothing
+  - type: Appearance
+  - type: Extractable
+    grindableSolutionName: nothing
+  - type: SolutionContainerManager
+    solutions:
+      nothing:
+        reagents:
+        - ReagentId: nothing
+          Quantity: 20 # so dedicated mimes can double their nothing in exchange for flour
+  - type: Edible
+  - type: FlavorProfile
+    flavors:
+    - nothing
+
+- type: entity
+  parent: IngotNothing
+  id: IngotNothing1
+  name: nothing
+  suffix: Single
+  components:
+  - type: Sprite
+    state: nothing
+  - type: Stack
+    count: 1
+
+# nothing (the revolver)
+## toy
+- type: entity
+  parent: [ BaseItem, BaseToyGun ]
+  id: RevolverNothing
+  name: nothing
+  description: Looks nothing like the real thing! Ages 8 and up.
+  components:
+  - type: Sprite
+    sprite: _Euphoria/Objects/Fun/nothing_capgun.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Item
+    shape:
+    - 0,0,1,0
+    - 0,1,0,1
+    storedOffset: -2,-7
+    sprite: _Euphoria/Objects/Fun/nothing_capgun.rsi
+  - type: Tag
+    tags:
+    - Sidearm
+    - ToySidearm
+  - type: AmmoCounter
+  - type: Gun
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    fireRate: 2
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/revolver.ogg
+      params:
+        volume: 2.25
+  - type: RevolverAmmoProvider
+    whitelist:
+      tags:
+      - CartridgeNothing
+      - SpeedLoaderNothing
+    proto: CartridgeNothing
+    capacity: 6
+    chambers: [ True, True, True, True, True, True ]
+    ammoSlots: [ null, null, null, null, null, null ]
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/revolver_magin.ogg
+  - type: ContainerContainer
+    containers:
+      revolver-ammo: !type:Container
+
+## uplink
+- type: entity
+  parent: RevolverNothing
+  id: RevolverNothingFake
+  suffix: Fake
+  components:
+  - type: RevolverAmmoProvider
+    whitelist:
+      tags:
+      - CartridgeNothing
+      - SpeedLoaderNothing
+      - CartridgeMagnum
+      - SpeedLoaderMagnum
+    proto: CartridgeMagnumAP
+
+## cartridge
+- type: entity
+  abstract: true
+  parent: BaseCartridge
+  id: BaseCartridgeNothing
+  name: cartridge (nothing)
+  components:
+  - type: Tag
+    tags:
+    - CartridgeNothing
+  - type: CartridgeAmmo
+  - type: Sprite
+    sprite: _Euphoria/Objects/Weapons/Guns/Ammunition/Cartridges/capgun_casing.rsi
+    layers:
+    - state: base
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: SpentAmmoVisuals
+  - type: Appearance
+  - type: StaticPrice
+    price: 5
+
+- type: entity
+  parent: BaseCartridgeNothing
+  id: CartridgeNothing
+  name: nothing
+  description: A mock pistol cartridge that makes nothing, but has nothing.
+  components:
+  - type: CartridgeAmmo
+    proto: BulletCap
+
+## ammo box
+- type: entity
+  parent: BaseMagazineBoxMagnum
+  id: BoxCartridgeNothing
+  name: nothing
+  description: A nothing box of nothing.
+  components:
+  - type: Sprite
+    sprite: _Euphoria/Objects/Weapons/Guns/Ammunition/Boxes/nothing.rsi
+    layers:
+    - state: capbase
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+    - state: cap
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    whitelist:
+      tags:
+      - CartridgeNothing
+    proto: CartridgeNothing
+    capacity: 20
+
+## speedloader
+- type: entity
+  abstract: true
+  parent: BaseItem
+  id: BaseSpeedLoaderNothing
+  name: nothing
+  components:
+  - type: Tag
+    tags:
+    - SpeedLoaderNothing
+  - type: SpeedLoader
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+      - CartridgeNothing
+    capacity: 6
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-6
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: MagazineVisuals
+    magState: mag
+    steps: 7
+    zeroVisible: false
+  - type: Appearance
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+        ents: []
+
+- type: entity
+  parent: BaseSpeedLoaderNothing
+  id: SpeedLoaderNothing
+  name: nothing
+  description: Designed to quickly load nothing into nothing.
+  components:
+  - type: BallisticAmmoProvider
+    proto: CartridgeNothing
+  - type: Sprite
+    sprite: _Euphoria/Objects/Weapons/Guns/Ammunition/Speedloaders/caps.rsi
+
+# nothing (the hammer)
+- type: entity
+  parent: [ BaseItem, BaseToySword ]
+  id: NothingHammer
+  name: nothing
+  description: A mute colored hammer made of nothing.
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/rubber_hammer.rsi
+    state: icon
+  - type: WeaponRandom # 1 in 100,000 to "win" the "fight"
+    damageBonus:
+      types:
+        Blunt: 1000
+  - type: Item
+    size: Small
+    sprite: Objects/Fun/rubber_hammer.rsi
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    soundHit: &SoundRubberHammer
+      collection: RubberHammer
+      params:
+        variation: 0.03
+        volume: 3
+    soundNoDamage: *SoundRubberHammer

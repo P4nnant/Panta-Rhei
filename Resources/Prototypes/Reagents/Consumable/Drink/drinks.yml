@@ -305,6 +305,7 @@
   desc: reagent-desc-nothing
   group: Drinks
   physicalDesc: reagent-physical-desc-nothing
+  flavor: nothing # euphoria - apparently this was missing for some reason
   metabolisms:
     Digestion:
       effects:
