@@ -4,7 +4,7 @@
   id: IngotNothing
   name: nothing
   description: It's nothing! Experienced mimes can make fun things out of this.
-  suffix: Full
+  suffix: Ingot, Full
   components:
   - type: Material
   - type: Stack
@@ -29,7 +29,7 @@
     solutions:
       nothing:
         reagents:
-        - ReagentId: nothing
+        - ReagentId: Nothing
           Quantity: 20 # so dedicated mimes can double their nothing in exchange for flour
   - type: Edible
   - type: FlavorProfile
@@ -40,7 +40,7 @@
   parent: IngotNothing
   id: IngotNothing1
   name: nothing
-  suffix: Single
+  suffix: Ingot, Single
   components:
   - type: Sprite
     state: nothing
@@ -54,6 +54,7 @@
   id: RevolverNothing
   name: nothing
   description: Looks nothing like the real thing! Ages 8 and up.
+  suffix: Capgun
   components:
   - type: Sprite
     sprite: _Euphoria/Objects/Fun/nothing_capgun.rsi
@@ -99,7 +100,7 @@
 - type: entity
   parent: RevolverNothing
   id: RevolverNothingFake
-  suffix: Fake
+  suffix: Capgun, Fake
   components:
   - type: RevolverAmmoProvider
     whitelist:
@@ -136,6 +137,7 @@
   id: CartridgeNothing
   name: nothing
   description: A mock pistol cartridge that makes nothing, but has nothing.
+  suffix: Cap cartridge
   components:
   - type: CartridgeAmmo
     proto: BulletCap
@@ -146,6 +148,7 @@
   id: BoxCartridgeNothing
   name: nothing
   description: A nothing box of nothing.
+  suffix: Cap cartridge ammo box
   components:
   - type: Sprite
     sprite: _Euphoria/Objects/Weapons/Guns/Ammunition/Boxes/nothing.rsi
@@ -200,6 +203,7 @@
   id: SpeedLoaderNothing
   name: nothing
   description: Designed to quickly load nothing into nothing.
+  suffix: Cap cartridge speedloader
   components:
   - type: BallisticAmmoProvider
     proto: CartridgeNothing
@@ -212,9 +216,10 @@
   id: NothingHammer
   name: nothing
   description: A mute colored hammer made of nothing.
+  suffix: Squeaky hammer
   components:
   - type: Sprite
-    sprite: Objects/Fun/rubber_hammer.rsi
+    sprite: _Euphoria/Objects/Fun/rubber_hammer.rsi
     state: icon
   - type: WeaponRandom # 1 in 100,000 to "win" the "fight"
     damageBonus:
@@ -222,12 +227,223 @@
         Blunt: 1000
   - type: Item
     size: Small
-    sprite: Objects/Fun/rubber_hammer.rsi
+    sprite: _Euphoria/Objects/Fun/rubber_hammer.rsi
   - type: MeleeWeapon
     wideAnimationRotation: -135
     soundHit: &SoundRubberHammer
       collection: RubberHammer
       params:
         variation: 0.03
-        volume: 3
+        volume: 10
     soundNoDamage: *SoundRubberHammer
+
+# nothing (the tile)
+- type: tile
+  id: FloorNothing
+  parent: BaseStationTile
+  name: tiles-nothing-floor
+  sprite: /Textures/_Euphoria/Tiles/nothing.rsi/nothing.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  itemDrop: FloorTileItemNothing
+
+- type: entity
+  name: nothing
+  parent: FloorTileItemBase
+  description: These could work as nothing.
+  id: FloorTileItemNothing
+  suffix: Floor tile
+  components:
+  - type: Sprite
+    sprite: _Euphoria/Tiles/nothing.rsi
+    state: nothing_tile
+  - type: Item
+    sprite: _Euphoria/Tiles/nothing.rsi
+    heldPrefix: nothing
+  - type: FloorTile
+    outputs:
+    - FloorNothing
+  - type: Stack
+    stackType: NothingTile
+  #- type: Construction
+  #  graph: TileSteel
+  #  node: steeltile
+
+# nothing (the shield)
+- type: entity
+  name: nothing
+  parent: BaseShield
+  id: NothingShield
+  description: A small round nothing shield.
+  suffix: Shield
+  components:
+  - type: Sprite
+    sprite: _Euphoria/Objects/Shields/buckler.rsi
+    state: icon
+    #state: buckler-icon
+  - type: Item
+    sprite: _Euphoria/Objects/Shields/buckler.rsi
+    size: Ginormous
+    #heldPrefix: buckler
+  - type: Clothing
+    sprite: _Euphoria/Objects/Shields/buckler.rsi
+    quickEquip: false
+    slots:
+    - suitStorage
+  - type: Blocking
+    passiveBlockModifier:
+      coefficients:
+        Blunt: 1
+        Slash: 1
+        Piercing: 1
+        Heat: 1
+    activeBlockModifier:
+      coefficients:
+        Blunt: 1
+        Slash: 1
+        Piercing: 1
+        Heat: 1
+  - type: Construction
+    graph: WoodenBuckler
+    node: woodenBuckler
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          IngotNothing1:
+            min: 1
+            max: 1
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+  - type: StaticPrice
+    price: 150
+
+# nothing (the wall)
+
+- type: entity
+  parent: BaseWall
+  id: WallNothing
+  name: nothing
+  description: Keeps the nothing in and nothing out. Somehow airtight.
+  suffix: Wall
+  components:
+  - type: Sprite
+    sprite: _Euphoria/Objects/Structures/Walls/nothing.rsi
+  - type: WallReplacementMarker
+  #- type: Construction
+  #  graph: Girder
+  #  node: wall
+  - type: Icon
+    sprite: _Euphoria/Objects/Structures/Walls/nothing.rsi
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+        - !type:DoActsBehavior
+          acts: ["Destruction"]
+        - !type:PlaySoundBehavior
+          sound:
+            collection: MetalSlam
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+        - !type:DoActsBehavior
+          acts: ["Destruction"]
+        - !type:PlaySoundBehavior
+          sound:
+            collection: MetalSlam
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            IngotNothing1:
+              min: 1
+              max: 1
+  - type: IconSmooth
+    key: walls
+    base: solid
+
+# nothing (the bed)
+- type: entity
+  name: nothing
+  id: BedNothing
+  parent: BaseStructure
+  description: This is used for nothing. Resting here provides nothing.
+  suffix: Bed
+  components:
+  - type: HealOnBuckle
+    damage:
+      types:
+        Poison: -0.1
+        Blunt: -0.1
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.05"
+        density: 190
+        mask:
+        - TableMask
+  - type: Sprite
+    sprite: _Euphoria/Structures/Furniture/Beds/nothing.rsi
+    state: bed
+    noRot: true
+  - type: Strap
+    position: Down
+    rotation: -90
+  # Construction has to be before PlaceableSurface or you'll place things onto the entity instead of deconstructing it.
+  - type: Construction
+    graph: bed
+    node: bed
+  # So that you can put bedsheets on beds again. Would be cool to have a tag
+  # for this so that only bedsheets can be placed.
+  - type: PlaceableSurface
+    placeCentered: true
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger: # Excess damage, don't spawn entities
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          IngotNothing1:
+            min: 1
+            max: 1
+  - type: Transform
+    anchored: true
+    noRot: true
+  - type: Anchorable
+  - type: Pullable
