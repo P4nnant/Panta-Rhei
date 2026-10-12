@@ -341,7 +341,7 @@
   parent: BaseWall
   id: WallNothing
   name: nothing
-  description: Keeps the nothing in and nothing out. Somehow airtight.
+  description: Keeps nothing in and nothing out. Somehow airtight.
   suffix: Wall
   components:
   - type: Sprite
@@ -447,3 +447,251 @@
     noRot: true
   - type: Anchorable
   - type: Pullable
+
+# nothing (the door)
+- type: entity
+  id: BaseNothingDoor
+  parent: BaseStructure
+  name: nothing
+  abstract: true
+  description: Keeps nothing in and nothing out. Somehow airtight.
+  components:
+  - type: Anchorable
+    flags:
+    - Anchorable
+  - type: Rotatable
+  - type: Sprite
+    sprite: _Euphoria/Structures/Furniture/Doors/MineralDoors/nothing_door.rsi
+    layers:
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+  - type: AnimationPlayer
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.49,-0.49,0.49,0.49"
+        density: 100
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+  - type: Door
+    bumpOpen: false
+    clickOpen: true
+    canCrush: false
+    closeTimeOne: 0.2
+    closeTimeTwo: 0.6
+    openTimeOne: 0.6
+    openTimeTwo: 0.2
+    openingAnimationTime: 1.2
+    closingAnimationTime: 1.2
+  - type: Appearance
+  - type: Weldable
+    time: 2
+    weldedExamineMessage: null
+  - type: Airtight
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallic
+  - type: Destructible
+    thresholds:
+    - trigger: # Excess damage, don't spawn entities
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          IngotNothing1:
+            min: 1
+            max: 1
+  - type: IconSmooth
+    key: walls
+    mode: NoSprite
+  - type: Occluder
+  - type: ContainerFill
+    containers:
+      battery-container: [ PowerCellMedium ]
+  - type: Tag
+    tags:
+    - Structure
+    - Wall
+    - ForceNoFixRotations # Don't want the fixrotations command to target these
+  - type: ContainerContainer
+    containers:
+      battery-container: !type:Container
+  - type: BlockWeather
+
+- type: entity
+  id: NothingDoor
+  name: nothing
+  parent: BaseNothingDoor
+  suffix: Door
+  components:
+  - type: Construction
+    graph: SecretDoor
+    node: solidSecretDoor
+    containers:
+    - battery-container
+
+# nothing (the chair)
+- type: entity
+  name: nothing
+  id: NothingChair
+  description: You sit in this. Either by nothing or or nothing.
+  placement:
+    mode: PlaceFree
+  suffix: Chair
+  components:
+  - type: Animateable
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.2
+        density: 100
+        mask:
+        - TableMask
+  - type: Sprite
+    sprite: _Euphoria/Structures/Furniture/Chair/nothing.rsi
+    noRot: true
+    state: chair
+  - type: Strap
+    position: Stand
+    buckleOffset: "0,-0.05"
+  - type: Pullable
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger: # Excess damage, don't spawn entities
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          IngotNothing1:
+            min: 1
+            max: 1
+  - type: StaticPrice
+    price: 50
+  - type: Anchorable
+  - type: Rotatable
+  - type: Physics
+    bodyType: Static
+  - type: Transform
+    anchored: true
+
+# nothing (the lights)
+- type: entity
+  name: nothing
+  description: A light fixture. Draws nothing and produces nothing when equipped with nothing.
+  id: NothinglightEmpty
+  suffix: Empty, Light fixture
+  parent: AlwaysPoweredWallLight
+  components:
+  - type: Sprite
+    sprite: _Euphoria/Structures/Wallmounts/Lighting/Nothing/light_tube.rsi
+    state: empty
+  - type: PointLight
+    enabled: false
+  - type: PoweredLight
+    bulb: Tube
+  - type: ContainerContainer
+    containers:
+      light_bulb: !type:ContainerSlot
+  - type: ApcPowerReceiver
+  - type: ExtensionCableReceiver
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: SmartLight
+  - type: WirelessNetworkConnection
+    range: 200
+  - type: DeviceLinkSink
+    ports:
+    - On
+    - Off
+    - Toggle
+  - type: Appearance
+  - type: PoweredLightVisuals
+    blinkingSound:
+      path: "/Audio/Machines/light_tube_on.ogg"
+    spriteStateMap:
+      empty: empty
+      off: base
+      on: base
+      broken: broken
+      burned: burned
+  - type: DamageOnInteract
+    damage:
+      types:
+        Heat: 2
+    popupText: powered-light-component-burn-hand
+
+- type: entity
+  name: nothing
+  description: A light fixture. Draws nothing and produces nothing when equipped with nothing.
+  id: NothingSmallLightEmpty
+  suffix: Empty, Small light fixture
+  parent: SmallLight
+  components:
+  - type: Sprite
+    sprite: _Euphoria/Structures/Wallmounts/Lighting/Nothing/light_small.rsi
+    state: empty
+  - type: AmbientSound
+    enabled: false
+  - type: PointLight
+    enabled: false
+    offset: "0, -0.5"
+  - type: ContainerContainer
+    containers:
+      light_bulb: !type:ContainerSlot
+  - type: PoweredLight
+    bulb: Bulb
+  - type: ApcPowerReceiver
+  - type: ExtensionCableReceiver
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: SmartLight
+  - type: WirelessNetworkConnection
+    range: 200
+  - type: Appearance
+  - type: PoweredLightVisuals
+    spriteStateMap:
+      empty: empty
+      off: base
+      on: base
+      broken: broken
+      burned: burned
+  - type: DeviceLinkSink
+    ports:
+    - On
+    - Off
+    - Toggle
+  - type: DamageOnInteract
+    damage:
+      types:
+        Heat: 2
+    popupText: powered-light-component-burn-hand
