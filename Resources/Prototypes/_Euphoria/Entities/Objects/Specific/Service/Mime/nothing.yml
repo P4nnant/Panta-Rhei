@@ -6,7 +6,10 @@
   description: It's nothing! Experienced mimes can make fun things out of this.
   suffix: Ingot, Full
   components:
-  - type: Material
+  #- type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      Nothing: 100
   - type: Stack
     stackType: Nothing
     baseLayer: base
@@ -35,6 +38,9 @@
   - type: FlavorProfile
     flavors:
     - nothing
+  - type: Tag
+    tags:
+    - Nothing
 
 - type: entity
   parent: IngotNothing
@@ -46,6 +52,28 @@
     state: nothing
   - type: Stack
     count: 1
+
+- type: entity
+  parent: IngotNothing
+  id: IngotNothing10
+  name: nothing
+  suffix: Ingot, 10
+  components:
+  - type: Sprite
+    state: nothing_2
+  - type: Stack
+    count: 10
+
+- type: material
+  id: Nothing
+  stackEntity: IngotNothing1
+  name: tiles-nothing-floor
+  unit: materials-unit-bar
+  icon: { sprite: _Euphoria/Objects/Materials/nothing.rsi, state: nothing_3 }
+  price: 0.1
+  properties: # FH edit
+    electrical: 4
+    flammable: 3
 
 # nothing (the revolver)
 ## toy
@@ -69,6 +97,7 @@
     sprite: _Euphoria/Objects/Fun/nothing_capgun.rsi
   - type: Tag
     tags:
+    - Nothing
     - Sidearm
     - ToySidearm
   - type: AmmoCounter
@@ -95,6 +124,9 @@
   - type: ContainerContainer
     containers:
       revolver-ammo: !type:Container
+  - type: Construction
+    graph: NothingObjects
+    node: RevolverNothing
 
 ## uplink
 - type: entity
@@ -120,6 +152,7 @@
   components:
   - type: Tag
     tags:
+    - Nothing
     - CartridgeNothing
   - type: CartridgeAmmo
   - type: Sprite
@@ -165,6 +198,12 @@
       - CartridgeNothing
     proto: CartridgeNothing
     capacity: 20
+  - type: Tag
+    tags:
+    - Nothing
+  - type: Construction
+    graph: NothingObjects
+    node: BoxCartridgeNothing
 
 ## speedloader
 - type: entity
@@ -175,6 +214,7 @@
   components:
   - type: Tag
     tags:
+    - Nothing
     - SpeedLoaderNothing
   - type: SpeedLoader
   - type: BallisticAmmoProvider
@@ -209,6 +249,9 @@
     proto: CartridgeNothing
   - type: Sprite
     sprite: _Euphoria/Objects/Weapons/Guns/Ammunition/Speedloaders/caps.rsi
+  - type: Construction
+    graph: NothingObjects
+    node: SpeedLoaderNothing
 
 # nothing (the hammer)
 - type: entity
@@ -236,6 +279,12 @@
         variation: 0.03
         volume: 10
     soundNoDamage: *SoundRubberHammer
+  - type: Tag
+    tags:
+    - Nothing
+  - type: Construction
+    graph: NothingObjects
+    node: NothingHammer
 
 # nothing (the tile)
 - type: tile
@@ -269,9 +318,12 @@
     - FloorNothing
   - type: Stack
     stackType: NothingTile
-  #- type: Construction
-  #  graph: TileSteel
-  #  node: steeltile
+  - type: Tag
+    tags:
+    - Nothing
+  - type: Construction
+    graph: NothingObjects
+    node: tile
 
 # nothing (the shield)
 - type: entity
@@ -307,9 +359,6 @@
         Slash: 1
         Piercing: 1
         Heat: 1
-  - type: Construction
-    graph: WoodenBuckler
-    node: woodenBuckler
   - type: Destructible
     thresholds:
     - trigger:
@@ -334,6 +383,12 @@
           collection: WoodDestroy
   - type: StaticPrice
     price: 150
+  - type: Tag
+    tags:
+    - Nothing
+  - type: Construction
+    graph: NothingObjects
+    node: NothingShield
 
 # nothing (the wall)
 
@@ -347,9 +402,9 @@
   - type: Sprite
     sprite: _Euphoria/Objects/Structures/Walls/nothing.rsi
   - type: WallReplacementMarker
-  #- type: Construction
-  #  graph: Girder
-  #  node: wall
+  - type: Construction
+    graph: NothingStructures
+    node: wall
   - type: Icon
     sprite: _Euphoria/Objects/Structures/Walls/nothing.rsi
   - type: Destructible
@@ -412,10 +467,10 @@
   - type: Strap
     position: Down
     rotation: -90
-  # Construction has to be before PlaceableSurface or you'll place things onto the entity instead of deconstructing it.
   - type: Construction
-    graph: bed
-    node: bed
+    graph: NothingStructures
+    node: BedNothing
+  # Construction has to be before PlaceableSurface or you'll place things onto the entity instead of deconstructing it.
   # So that you can put bedsheets on beds again. Would be cool to have a tag
   # for this so that only bedsheets can be placed.
   - type: PlaceableSurface
@@ -539,10 +594,8 @@
   suffix: Door
   components:
   - type: Construction
-    graph: SecretDoor
-    node: solidSecretDoor
-    containers:
-    - battery-container
+    graph: NothingStructures
+    node: NothingDoor
 
 # nothing (the chair)
 - type: entity
@@ -603,6 +656,9 @@
     bodyType: Static
   - type: Transform
     anchored: true
+  - type: Construction
+    graph: NothingStructures
+    node: NothingChair
 
 # nothing (the lights)
 - type: entity
@@ -649,6 +705,9 @@
       types:
         Heat: 2
     popupText: powered-light-component-burn-hand
+  - type: Construction
+    graph: NothingStructures
+    node: NothinglightEmpty
 
 - type: entity
   name: nothing
@@ -695,3 +754,456 @@
       types:
         Heat: 2
     popupText: powered-light-component-burn-hand
+  - type: Construction
+    graph: NothingStructures
+    node: NothingSmallLightEmpty
+
+# nothing (the starter kit)
+- type: entity
+  id: MimeCase
+  name: nothing
+  description: A case containing nothing, the tools of the trade of a mime.
+  parent: [BaseMimeContraband, BaseItem]
+  suffix: Starter kit
+  components:
+  - type: Sprite
+    sprite: _Euphoria/Objects/Tools/mime-case.rsi
+    state: icon
+  - type: ThiefUndeterminedBackpack
+    maxSelectedSets: 1
+    toolName: hitman-briefcase-window-title
+    toolDesc: hitman-briefcase-window-description
+    possibleSets:
+    - MimeNothingStarterKit
+    - MimeNothingBottleStarterKit
+    - MimeGunslingerKit
+    - MimeTiderKit
+    - HitmanPoisonerKit
+    - HitmanSaboteurKit
+    - HitmanTrackerKit
+  - type: ActivatableUI
+    key: enum.ThiefBackpackUIKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.ThiefBackpackUIKey.Key:
+        type: ThiefBackpackBoundUserInterface
+  - type: Tag
+    tags:
+    - Nothing
+
+## mime gloves
+- type: entity
+  parent: [ClothingHandsGlovesSyntheticBase, BaseMimeContraband]
+  id: ClothingHandsGlovesMime
+  name: mime gloves
+  description: Regular white gloves that assist with mime related shenanigans.
+  components:
+  - type: Sprite
+    sprite: Clothing/Hands/Gloves/Color/color.rsi
+    layers:
+    - state: icon
+      color: "#EAE8E8"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#EAE8E8"
+      right:
+      - state: inhand-right
+        color: "#EAE8E8"
+  - type: Insulated
+  - type: Clothing
+    sprite: Clothing/Hands/Gloves/Color/color.rsi
+    clothingVisuals:
+      gloves:
+      - state: equipped-HAND
+        color: "#EAE8E8"
+  - type: Fiber
+    fiberMaterial: fibers-insulative
+    fiberColor: fibers-white
+  - type: Tag
+    tags:
+    - Nothing
+
+## nothing tools
+### crowbar
+- type: entity
+  parent: BaseCrowbar
+  id: NothingCrowbar
+  name: nothing
+  description: A multipurpose tool used for nothing, such as nothing or nothing.
+  suffix: Crowbar
+  components:
+  - type: Item
+    sprite: _Euphoria/Objects/Tools/Nothing/crowbar.rsi
+    size: Small
+    storedSprite:
+      sprite: _Euphoria/Objects/Tools/Nothing/crowbar.rsi
+      state: storage
+  - type: Sprite
+    sprite: _Euphoria/Objects/Tools/Nothing/crowbar.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Euphoria/Objects/Tools/Nothing/crowbar.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: Construction
+    graph: NothingObjects
+    node: NothingCrowbar
+
+### wire cutters
+- type: entity
+  name: nothing
+  parent: BaseItem
+  id: NothingWirecutter
+  description: This kills nothing.
+  suffix: Wirecutter
+  components:
+  - type: EmitSoundOnPickup # Euphoria - New interaction SFX from Funky
+    sound:
+      path: /Audio/_EE/Items/Handling/wirecutter_pickup.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_EE/Items/Handling/wirecutter_drop.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_EE/Items/Handling/wirecutter_drop.ogg
+      params:
+        volume: -4
+  - type: Tag
+    tags:
+    - PlantSampleTaker
+    - Wirecutter
+  - type: Sprite
+    sprite: _Euphoria/Objects/Tools/Nothing/wirecutters.rsi
+    layers:
+    - state: cutters
+      map: [ "enum.DamageStateVisualLayers.Base" ]
+    - state: cutters-cutty-thingy
+  - type: MeleeWeapon
+    wideAnimationRotation: -90
+    damage:
+      types:
+        Piercing: 2
+    attackRate: 2 #open and close that shit on their arm like hell! because you sure aren't doing any damage with this
+    soundHit:
+      path: "/Audio/Items/wirecutter.ogg"
+  - type: Tool
+    qualities:
+    - Cutting
+    useSound:
+      path: /Audio/Items/wirecutter.ogg
+  - type: Item
+    sprite: _Euphoria/Objects/Tools/Nothing/wirecutters.rsi
+    storedRotation: -90
+  - type: ToolTileCompatible
+  - type: StaticPrice
+    price: 30
+  - type: Construction
+    graph: NothingObjects
+    node: NothingWirecutter
+
+### screwdriver
+- type: entity
+  name: nothing
+  parent: BaseItem
+  id: NothingScrewdriver
+  description: Industrial grade torque in nothing.
+  suffix: Screwdriver
+  components:
+  - type: EmitSoundOnPickup # Euphoria - New interaction SFX from Funky
+    sound:
+      path: /Audio/_EE/Items/Handling/screwdriver_pickup.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_EE/Items/Handling/screwdriver_drop.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Items/screwdriver_drop.ogg
+      params:
+        volume: -4
+  - type: Tag
+    tags:
+    - Screwdriver
+  - type: Sprite
+    sprite: _Euphoria/Objects/Tools/Nothing/screwdriver.rsi
+    layers:
+    - state: screwdriver
+      map: [ "enum.DamageStateVisualLayers.Base" ]
+    - state: screwdriver-screwybits
+  - type: Item
+    sprite: _Euphoria/Objects/Tools/Nothing/screwdriver.rsi
+    storedRotation: -90
+  - type: MeleeWeapon
+    wideAnimationRotation: -90
+    attackRate: 1
+    damage:
+      types:
+        Piercing: 6
+    soundHit:
+      path: "/Audio/Weapons/bladeslice.ogg"
+  - type: Tool
+    qualities:
+    - Screwing
+    useSound:
+      collection: Screwdriver
+  - type: StaticPrice
+    price: 30
+  - type: Construction
+    graph: NothingObjects
+    node: NothingScrewdriver
+
+### wrench
+- type: entity
+  name: nothing
+  parent: BaseItem
+  id: NothingWrench
+  description: 'A common tool for nothing and nothing. Remember: lefty loosey, righty tighty.'
+  suffix: Wrench
+  components:
+  - type: EmitSoundOnPickup # Euphoria - New interaction SFX from Funky
+    sound:
+      path: /Audio/_EE/Items/Handling/wrench_pickup.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_EE/Items/Handling/wrench_drop.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Items/wrench_drop.ogg
+      params:
+        volume: -4
+  - type: Tag
+    tags:
+    - Wrench
+  - type: Sprite
+    sprite: _Euphoria/Objects/Tools/Nothing/wrench.rsi
+    state: icon
+  - type: Item
+    sprite: _Euphoria/Objects/Tools/Nothing/wrench.rsi
+    storedSprite:
+      sprite: _Euphoria/Objects/Tools/Nothing/wrench.rsi
+      state: storage
+  - type: MeleeWeapon
+    wideAnimationRotation: 135
+    attackRate: 1.5
+    damage:
+      types:
+        Blunt: 4.5
+    soundHit:
+      collection: MetalThud
+  - type: Tool
+    qualities:
+    - Anchoring
+    useSound:
+      path: /Audio/Items/ratchet.ogg
+  - type: StaticPrice
+    price: 22
+  - type: GuideHelp
+    guides:
+    - Construction
+  - type: Construction
+    graph: NothingObjects
+    node: NothingWrench
+
+### multitool
+- type: entity
+  name: nothing
+  parent: BaseItem
+  id: NothingMultitool
+  description: An advanced tool to copy, store, and send electrical pulses and signals through nothing.
+  suffix: Multitool
+  components:
+  - type: EmitSoundOnPickup # Euphoria - New interaction SFX from Funky
+    sound:
+      path: /Audio/_EE/Items/Handling/multitool_pickup.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_EE/Items/Handling/multitool_drop.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Items/multitool_drop.ogg
+      params:
+        volume: -4
+  - type: Sprite
+    sprite: _Euphoria/Objects/Tools/Nothing/multitool.rsi
+    layers:
+    - state: icon
+    - state: green-unlit
+      shader: unshaded
+  - type: Item
+    size: Small
+  - type: Clothing
+    sprite: _Euphoria/Objects/Tools/Nothing/multitool.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: Tool
+    qualities:
+    - Pulsing
+  - type: NetworkConfigurator
+  - type: ActivatableUI
+    key: enum.NetworkConfiguratorUiKey.List
+    inHandsOnly: true
+  - type: UserInterface
+    interfaces:
+      enum.NetworkConfiguratorUiKey.List:
+        type: NetworkConfiguratorBoundUserInterface
+      enum.NetworkConfiguratorUiKey.Configure:
+        type: NetworkConfiguratorBoundUserInterface
+      enum.NetworkConfiguratorUiKey.Link:
+        type: NetworkConfiguratorBoundUserInterface
+  - type: Tag
+    tags:
+    - Multitool
+    - DoorElectronicsConfigurator
+  - type: StaticPrice
+    price: 56
+  - type: GuideHelp
+    guides:
+    - Networking
+    - WirePanels
+    - Airlocks
+    - InspectingPower
+  - type: Construction
+    graph: NothingObjects
+    node: NothingMultitool
+
+### welder
+- type: entity
+  name: nothing
+  parent: BaseItem
+  id: NothingWelder
+  description: "Melts nothing as long as it's fueled, don't forget your nothing!"
+  suffix: Welder
+  components:
+  - type: EmitSoundOnPickup # Euphoria - Bring back interaction SFX from EE
+    sound:
+      path: /Audio/_EE/Items/Handling/welder_pickup.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_EE/Items/Handling/welder_drop.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Items/welder_drop.ogg
+  - type: Sprite
+    sprite: _Euphoria/Objects/Tools/Nothing/welder.rsi
+    layers:
+    - state: icon
+    - state: welder_flame
+      visible: false
+      shader: unshaded
+      map: ["enum.ToggleableVisuals.Layer"]
+  - type: GenericVisualizer
+    visuals:
+      enum.ToggleableVisuals.Enabled:
+        enum.ToggleableVisuals.Layer:
+          True: { visible: true }
+          False: { visible: false }
+  - type: Item
+    size: Small
+    sprite: _Euphoria/Objects/Tools/Nothing/welder.rsi
+  - type: ItemToggle
+    predictable: false
+    soundActivate:
+      collection: WelderOn
+      params:
+        variation: 0.125
+        volume: -5
+    soundDeactivate:
+      collection: WelderOff
+      params:
+        variation: 0.125
+        volume: -5
+  - type: ItemToggleMeleeWeapon
+    activatedSoundOnHit:
+      path: /Audio/Weapons/Guns/Hits/energy_meat1.ogg
+      params:
+        variation: 0.250
+        volume: -10
+    activatedSoundOnHitNoDamage:
+      path: /Audio/Weapons/Guns/Hits/energy_meat1.ogg
+      params:
+        variation: 0.250
+        volume: -12
+    deactivatedSoundOnHitNoDamage:
+      collection: MetalThud
+    activatedDamage:
+      types:
+        Heat: 8
+  - type: ItemToggleSize
+    activatedSize: Large
+  - type: ItemToggleHot
+  - type: ComponentToggler
+    components:
+    - type: DisarmMalus
+      malus: 0.6
+  - type: ToggleableVisuals
+    spriteLayer: flame
+    inhandVisuals:
+      left:
+      - state: inhand-left-flame
+        shader: unshaded
+      right:
+      - state: inhand-right-flame
+        shader: unshaded
+  - type: UseDelay
+  - type: MeleeWeapon
+    wideAnimationRotation: -90
+    damage:
+      types:
+        Blunt: 5 #i mean... i GUESS you could use it like that
+    soundHit:
+      collection: MetalThud
+  - type: RefillableSolution
+    solution: Welder
+  - type: SolutionContainerManager
+    solutions:
+      Welder:
+        reagents:
+        - ReagentId: WeldingFuel
+          Quantity: 100
+        maxVol: 100
+  - type: Tool
+    useSound:
+      collection: Welder
+    qualities: Welding
+  - type: Welder
+  - type: PointLight
+    enabled: false
+    radius: 1.5
+    color: orange
+    netsync: false
+  - type: ItemTogglePointLight
+  - type: Appearance
+  - type: RequiresEyeProtection
+  - type: StaticPrice
+    price: 40
+  - type: IgnitionSource
+    temperature: 700
+  - type: Tag # DeltaV - To make it work w/ the guns
+    tags:
+    - WeldingTool
+  - type: Construction
+    graph: NothingObjects
+    node: NothingWelder

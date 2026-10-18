@@ -32,6 +32,24 @@
     tags:
     - MimeBelt
     - WhitelistChameleon
+## Euphoria start
+  - type: Storage
+    maxItemSize: Normal
+    defaultStorageOrientation: Vertical
+    whitelist:
+      tags:
+      - Nothing
+    grid:
+    - 0,0,7,1
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+        ents: []
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+## Euphoria end
 
 - type: entity
   parent: ClothingBeltSuspendersRed

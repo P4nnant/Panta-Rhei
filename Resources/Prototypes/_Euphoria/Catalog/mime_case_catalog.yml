@@ -1,0 +1,110 @@
+﻿- type: thiefBackpackSet
+  id: MimeNothingStarterKit
+  name: tiles-nothing-floor
+  description: hitman-sharpshooter-kit-description
+  sprite:
+    sprite: _Euphoria/Objects/Materials/nothing.rsi
+    state: nothing_2
+  content:
+  - IngotNothing10
+  - IngotNothing10
+
+- type: thiefBackpackSet
+  id: MimeNothingBottleStarterKit
+  name: tiles-nothing-floor
+  description: hitman-bounty-hunter-kit-description
+  sprite:
+    sprite: Objects/Consumable/Drinks/bottleofnothing.rsi
+    state: icon
+  content:
+  - DrinkBottleOfNothingFull
+  - DrinkBottleOfNothingFull
+  - DrinkBottleOfNothingFull
+
+- type: thiefBackpackSet
+  id: MimeGunslingerKit
+  name: tiles-nothing-floor
+  description: hitman-assassin-kit-description
+  sprite:
+    sprite: _Euphoria/Objects/Fun/nothing_capgun.rsi
+    state: icon
+  content:
+  - RevolverNothing
+  - RevolverNothing
+  - BoxCartridgeNothing
+  - BoxCartridgeNothing
+  - SpeedLoaderNothing
+  - SpeedLoaderNothing
+
+- type: thiefBackpackSet
+  id: MimeTiderKit
+  name: tiles-nothing-floor
+  description: hitman-ninja-kit-description
+  sprite:
+    sprite: Clothing/Hands/Gloves/Color/color.rsi
+    state: icon
+    color: "#EAE8E8"
+  content:
+  - ClothingHandsGlovesMime
+  - NothingCrowbar
+  - NothingWirecutter
+  - NothingScrewdriver
+  - NothingWrench
+  - NothingMultitool
+  - NothingWelder
+  - StimpackMini
+  - StimpackMini
+  - MedkitCombatFilled
+
+- type: thiefBackpackSet
+  id: MimePoisonerKit
+  name: tiles-nothing-floor
+  description: hitman-poisoner-kit-description
+  sprite:
+    sprite: Objects/Specific/Chemistry/bottle.rsi
+    state: bottle
+  content:
+  - AdvancedJetInjector
+  - ChemistryBottlePax
+  - ChemistryBottleToxin
+  - ChemistryBottleMuteToxin
+  - ChemistryBottleNocturine
+  - ChemicalSynthesisKit
+
+- type: thiefBackpackSet
+  id: MimeSaboteurKit
+  name: tiles-nothing-floor
+  description: hitman-saboteur-kit-description
+  sprite:
+    sprite: Objects/Tools/emag.rsi
+    state: icon
+  content:
+  - Emag
+  - Doorjack
+  - SyndicateJawsOfLife
+  - PowerDrill
+  - Multitool
+  - WelderIndustrialAdvanced
+  - DeadMansSignaler
+  - RCD
+  - RCDAmmo
+  - ClothingBeltUtility
+  - ClothingHandsGlovesCombat
+  - ClothingEyesGlassesMeson
+
+- type: thiefBackpackSet
+  id: MimeTrackerKit
+  name: tiles-nothing-floor
+  description: hitman-tracker-kit-description
+  sprite:
+    sprite: Objects/Tools/spy_device.rsi
+    state: icon
+  content:
+  - PinpointerUniversal
+  - EncryptionKeyStationMaster
+  - EncryptionKeyBinarySyndicate
+  - SpyCrewMonitor
+  - CameraBug
+  - MultitoolAiDetector
+  - ClothingEyesGlassesHiddenSecurity
+  - HandheldStationMapRecordsTablet

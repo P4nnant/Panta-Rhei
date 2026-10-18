@@ -1,0 +1,87 @@
+- type: construction
+  id: WallNothing
+  graph: NothingStructures
+  startNode: start
+  targetNode: nodewall
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  entityWhitelist:
+    tags:
+    - NothingCrafter
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: constructionBedNothing
+  graph: NothingStructures
+  startNode: start
+  targetNode: nodeBedNothing
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  entityWhitelist:
+    tags:
+    - NothingCrafter
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: constructionNothingDoor
+  graph: NothingStructures
+  startNode: start
+  targetNode: nodeNothingDoor
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: true
+  canBuildInImpassable: false
+  entityWhitelist:
+    tags:
+    - NothingCrafter
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: constructionNothingChair
+  graph: NothingStructures
+  startNode: start
+  targetNode: nodeNothingChair
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  entityWhitelist:
+    tags:
+    - NothingCrafter
+
+- type: construction
+  id: constructionNothinglightEmpty
+  graph: NothingStructures
+  startNode: start
+  targetNode: nodeNothinglightEmpty
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: true
+  canBuildInImpassable: false
+  entityWhitelist:
+    tags:
+    - NothingCrafter
+
+- type: construction
+  id: constructionNothingSmallLightEmpty
+  graph: NothingStructures
+  startNode: start
+  targetNode: nodeNothingSmallLightEmpty
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  entityWhitelist:
+    tags:
+    - NothingCrafter

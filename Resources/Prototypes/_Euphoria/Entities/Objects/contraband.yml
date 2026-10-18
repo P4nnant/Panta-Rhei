@@ -1,0 +1,7 @@
+﻿- type: entity
+  id: BaseMimeContraband
+  parent: BaseRestrictedContraband
+  abstract: true
+  components:
+  - type: Contraband
+    allowedJobs: [ Mime ]

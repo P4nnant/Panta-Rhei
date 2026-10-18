@@ -1,0 +1,132 @@
+- type: construction
+  id: FloorTileItemNothing
+  graph: NothingObjects
+  startNode: start
+  targetNode: tile
+  category: construction-category-tiles
+  entityWhitelist:
+    tags:
+    - NothingCrafter
+  objectType: Item
+
+- type: construction
+  id: RevolverNothing
+  graph: NothingObjects
+  startNode: start
+  targetNode: RevolverNothing
+  category: construction-category-clothing
+  entityWhitelist:
+    tags:
+    - NothingCrafter
+  objectType: Item
+
+- type: construction
+  id: BoxCartridgeNothing
+  graph: NothingObjects
+  startNode: BoxCartridgeNothing
+  targetNode: BoxCartridgeNothing
+  category: construction-category-clothing
+  entityWhitelist:
+    tags:
+    - NothingCrafter
+  objectType: Item
+
+- type: construction
+  id: SpeedLoaderNothing
+  graph: NothingObjects
+  startNode: start
+  targetNode: SpeedLoaderNothing
+  category: construction-category-clothing
+  entityWhitelist:
+    tags:
+    - NothingCrafter
+  objectType: Item
+
+- type: construction
+  id: NothingHammer
+  name: construction-recipe-silk-woven-cloth
+  graph: NothingObjects
+  startNode: start
+  targetNode: NothingHammer
+  category: construction-category-materials
+  entityWhitelist:
+    tags:
+    - NothingCrafter
+  objectType: Item
+
+- type: construction
+  id: NothingShield
+  graph: NothingObjects
+  startNode: start
+  targetNode: NothingShield
+  category: construction-category-clothing
+  entityWhitelist:
+    tags:
+    - NothingCrafter
+  objectType: Item
+
+- type: construction
+  id: NothingCrowbar
+  graph: NothingObjects
+  startNode: start
+  targetNode: NothingCrowbar
+  category: construction-category-clothing
+  entityWhitelist:
+    tags:
+    - NothingCrafter
+  objectType: Item
+
+- type: construction
+  id: NothingWirecutter
+  graph: NothingObjects
+  startNode: start
+  targetNode: NothingWirecutter
+  category: construction-category-clothing
+  entityWhitelist:
+    tags:
+    - NothingCrafter
+  objectType: Item
+
+- type: construction
+  id: NothingScrewdriver
+  graph: NothingObjects
+  startNode: start
+  targetNode: NothingScrewdriver
+  category: construction-category-clothing
+  entityWhitelist:
+    tags:
+    - NothingCrafter
+  objectType: Item
+
+- type: construction
+  id: NothingWrench
+  graph: NothingObjects
+  startNode: start
+  targetNode: NothingWrench
+  category: construction-category-clothing
+  entityWhitelist:
+    tags:
+    - NothingCrafter
+  objectType: Item
+
+- type: construction
+  id: NothingMultitool
+  graph: NothingObjects
+  startNode: start
+  targetNode: NothingMultitool
+  category: construction-category-clothing
+  entityWhitelist:
+    tags:
+    - NothingCrafter
+  objectType: Item
+
+- type: construction
+  id: NothingWelder
+  graph: NothingObjects
+  startNode: start
+  targetNode: NothingWelder
+  category: construction-category-clothing
+  entityWhitelist:
+    tags:
+    - NothingCrafter
+  objectType: Item

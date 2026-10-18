@@ -1,0 +1,116 @@
+- type: constructionGraph
+  id: NothingObjects
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: tile
+      completed:
+      - !type:SetStackCount
+        amount: 4
+      steps:
+      - material: Nothing
+        amount: 1
+
+    - to: RevolverNothing
+      steps:
+      - material: Nothing
+        amount: 2
+        doAfter: 4
+
+    - to: BoxCartridgeNothing
+      steps:
+      - material: Nothing
+        amount: 4
+        doAfter: 6
+
+    - to: SpeedLoaderNothing
+      steps:
+      - material: Nothing
+        amount: 1
+        doAfter: 6
+
+    - to: NothingHammer
+      steps:
+      - material: Nothing
+        amount: 2
+        doAfter: 6
+
+    - to: NothingShield
+      steps:
+      - material: Nothing
+        amount: 6
+        doAfter: 6
+
+    - to: NothingCrowbar
+      steps:
+      - material: Nothing
+        amount: 1
+        doAfter: 4
+
+    - to: NothingWirecutter
+      steps:
+      - material: Nothing
+        amount: 1
+        doAfter: 4
+
+    - to: NothingScrewdriver
+      steps:
+      - material: Nothing
+        amount: 1
+        doAfter: 4
+
+    - to: NothingWrench
+      steps:
+      - material: Nothing
+        amount: 1
+        doAfter: 4
+
+    - to: NothingMultitool
+      steps:
+      - material: Nothing
+        amount: 1
+        doAfter: 4
+
+    - to: NothingWelder
+      steps:
+      - material: Nothing
+        amount: 1
+        doAfter: 4
+
+  # Deconstruction
+  - node: tile
+    entity: FloorTileItemNothing
+
+  - node: RevolverNothing
+    entity: RevolverNothing
+
+  - node: BoxCartridgeNothing
+    entity: BoxCartridgeNothing
+
+  - node: SpeedLoaderNothing
+    entity: SpeedLoaderNothing
+
+  - node: NothingHammer
+    entity: NothingHammer
+
+  - node: NothingShield
+    entity: NothingShield
+
+  - node: NothingCrowbar
+    entity: NothingCrowbar
+
+  - node: NothingWirecutter
+    entity: NothingWirecutter
+
+  - node: NothingScrewdriver
+    entity: NothingScrewdriver
+
+  - node: NothingWrench
+    entity: NothingWrench
+
+  - node: NothingMultitool
+    entity: NothingMultitool
+
+  - node: NothingWelder
+    entity: NothingWelder

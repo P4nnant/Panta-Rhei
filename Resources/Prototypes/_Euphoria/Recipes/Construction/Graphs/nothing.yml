@@ -1,0 +1,135 @@
+- type: constructionGraph
+  id: NothingStructures
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity {}
+    edges:
+    - to: nodewall
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: Nothing
+        amount: 4
+        doAfter: 3
+
+    - to: nodeBedNothing
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: Nothing
+        amount: 2
+        doAfter: 3
+
+    - to: nodeNothingDoor
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: Nothing
+        amount: 4
+        doAfter: 3
+
+    - to: nodeNothingChair
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: Nothing
+        amount: 1
+        doAfter: 3
+
+    - to: nodeNothinglightEmpty
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: Nothing
+        amount: 2
+        doAfter: 6
+
+    - to: nodeNothingSmallLightEmpty
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: Nothing
+        amount: 1
+        doAfter: 6
+
+
+  # Deconstruction is down here
+  - node: nodewall
+    entity: WallNothing
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: MaterialNothing1
+        amount: 4
+      steps:
+      - tool: Cutting
+        doAfter: 2
+
+  - node: nodeBedNothing
+    entity: BedNothing
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: MaterialNothing1
+        amount: 2
+      steps:
+      - tool: Cutting
+        doAfter: 2
+
+  - node: nodeNothingDoor
+    entity: NothingDoor
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: MaterialNothing1
+        amount: 4
+      steps:
+      - tool: Cutting
+        doAfter: 2
+
+  - node: nodeNothingChair
+    entity: NothingChair
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: MaterialNothing1
+        amount: 1
+      steps:
+      - tool: Cutting
+        doAfter: 2
+
+  - node: nodeNothinglightEmpty
+    entity: NothinglightEmpty
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: MaterialNothing1
+        amount: 2
+      steps:
+      - tool: Cutting
+        doAfter: 3
+
+  - node: nodeNothingSmallLightEmpty
+    entity: NothingSmallLightEmpty
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: MaterialNothing1
+        amount: 6
+      steps:
+      - tool: Cutting
+        doAfter: 3

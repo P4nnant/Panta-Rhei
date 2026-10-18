@@ -20,6 +20,9 @@
     - type: Psionic # Nyano - Summary: Makes the mime psionic.
     - type: MimePowers
       preventWriting: false # DeltaV
+    - type: Tag
+      tags:
+      - NothingCrafter
     #- type: FrenchAccent # DeltaV - remove forced accents
 
 - type: startingGear
