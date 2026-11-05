@@ -118,3 +118,33 @@
       Taco: BlueRaspberry
       Skewer: BlueRaspberry
       Hotdog: BlueRaspberry
+
+- type: entity
+  name: rose
+  parent: FoodProduceBase
+  id: FoodRoseRed
+  description: A flower often given as gifts between lovers. It smells quite pleasant. This one is a pretty ruby colour.
+  components:
+  - type: Clothing
+    slots:
+    - HEAD
+    - MASK
+    quickEquip: false
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 22
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
+        - ReagentId: Romantacilin
+          Quantity: 10
+  - type: Sprite
+    sprite: _Euphoria/Objects/Specific/Hydroponics/roses/red.rsi
+  #- type: Produce
+  #  seedId: redrose
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Tag
+    tags:
+    - Flower

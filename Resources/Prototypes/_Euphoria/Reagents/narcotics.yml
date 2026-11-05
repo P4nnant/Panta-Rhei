@@ -51,3 +51,70 @@
             max: 0.1
           - !type:ConsentCondition
             consent: Aphrodisiacs
+
+- type: reagent
+  id: Romantacilin
+  name: reagent-name-romantacilin
+  group: Narcotics
+  desc: reagent-desc-romantacilin
+  physicalDesc: reagent-physical-desc-smooth
+  flavor: love
+  color: "#45072f"
+  metabolisms:
+    Bloodstream: &PomelustineMetabolism # Euphoria - Pill Compatibility Patch
+      metabolismRate : 0.03
+      effects:
+      - !type:EvenHealthChange
+        damage:
+          Brute: -0.6
+          Burn: -0.6
+      - !type:PopupMessage
+        type: Local
+        visualType: Medium
+        messages:
+        - "reagent-effect-aphrodisiac-romantic-1"
+        - "reagent-effect-aphrodisiac-romantic-2"
+        - "reagent-effect-aphrodisiac-romantic-3"
+        - "reagent-effect-aphrodisiac-romantic-4"
+        - "reagent-effect-aphrodisiac-romantic-5"
+        probability: 0.035
+        conditions:
+        - !type:ReagentCondition
+          reagent: Romantacilin
+          max: 50
+        - !type:ConsentCondition
+          consent: Aphrodisiacs
+      - !type:PopupMessage # Overdose causes nausea and vomiting
+        type: Local
+        visualType: Medium
+        messages:
+        - "reagent-effect-aphrodisiac-romantic-overdose"
+        probability: 0.06
+        conditions:
+        - !type:ReagentCondition
+          reagent: Romantacilin
+          min: 50
+      - !type:Drunk
+        conditions:
+        - !type:ReagentCondition
+          reagent: Romantacilin
+          min: 50
+      - !type:Vomit
+        conditions:
+        - !type:ReagentCondition
+          reagent: Romantacilin
+          min: 60
+        probability: 0.05
+      - !type:PopupMessage
+        type: Local
+        visualType: Small
+        messages:
+        - "reagent-effect-aphrodisiac-fade" # A decent chance to notify the player when their meds run out, but could happen silently.
+        probability: 0.35
+        conditions:
+        - !type:ReagentCondition
+          reagent: Romantacilin
+          max: 0.1
+        - !type:ConsentCondition
+          consent: Aphrodisiacs
+    Digestion: *PomelustineMetabolism # Euphoria - Pill Compatibility Patch
