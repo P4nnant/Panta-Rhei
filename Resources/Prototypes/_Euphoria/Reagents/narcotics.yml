@@ -66,8 +66,8 @@
       effects:
       - !type:EvenHealthChange
         damage:
-          Brute: -0.6
-          Burn: -0.6
+          Brute: -0.05
+          Burn: -0.05
       - !type:PopupMessage
         type: Local
         visualType: Medium

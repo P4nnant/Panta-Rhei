@@ -136,7 +136,7 @@
         maxVol: 22
         reagents:
         - ReagentId: Nutriment
-          Quantity: 5
+          Quantity: 10
         - ReagentId: Romantacilin
           Quantity: 10
   - type: Sprite
