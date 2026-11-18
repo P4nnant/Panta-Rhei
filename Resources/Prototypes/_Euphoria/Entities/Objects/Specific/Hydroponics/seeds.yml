@@ -52,3 +52,47 @@
     seedId: WalkingMushrooms # need to change
   - type: Sprite
     sprite: _Euphoria/Objects/Specific/Hydroponics/walking_mushroom.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of red rose seeds
+  description: "Put on those tinted glasses and get planting."
+  id: RedRoseSeeds
+  components:
+  - type: Seed
+    seedId: RedRose
+  - type: Sprite
+    sprite: _Euphoria/Objects/Specific/Hydroponics/roses/red.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of blue rose seeds
+  description: "Put on those tinted glasses and get planting."
+  id: BlueRoseSeeds
+  components:
+  - type: Seed
+    seedId: BlueRose
+  - type: Sprite
+    sprite: _Euphoria/Objects/Specific/Hydroponics/roses/blue.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of pink rose seeds
+  description: "Put on those tinted glasses and get planting."
+  id: PinkRoseSeeds
+  components:
+  - type: Seed
+    seedId: PinkRose
+  - type: Sprite
+    sprite: _Euphoria/Objects/Specific/Hydroponics/roses/pink.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of white rose seeds
+  description: "Put on those tinted glasses and get planting."
+  id: WhiteRoseSeeds
+  components:
+  - type: Seed
+    seedId: WhiteRose
+  - type: Sprite
+    sprite: _Euphoria/Objects/Specific/Hydroponics/roses/white.rsi

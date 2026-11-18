@@ -158,3 +158,128 @@
       Min: 1
       Max: 4
       PotencyDivisor: 25
+
+- type: seed
+  id: RedRose
+  name: seeds-rose-red-name
+  noun: seeds-noun-seeds
+  displayName: seeds-rose-red-display-name
+  plantRsi: _Euphoria/Objects/Specific/Hydroponics/roses/red.rsi
+  packetPrototype: RedRoseSeeds
+  mutationPrototypes:
+  - BlueRose
+  - PinkRose
+  - WhiteRose
+  productPrototypes:
+  - FoodRoseRed
+  lifespan: 55
+  maturation: 10
+  production: 10
+  yield: 4
+  potency: 10
+  idealLight: 8
+  growthStages: 3
+  chemicals:
+    Nutriment:
+      Min: 10
+      Max: 10
+      PotencyDivisor: 20
+    Romantacilin:
+      Min: 10
+      Max: 10
+      PotencyDivisor: 20
+
+- type: seed
+  id: BlueRose
+  name: seeds-rose-blue-name
+  noun: seeds-noun-seeds
+  displayName: seeds-rose-blue-display-name
+  plantRsi: _Euphoria/Objects/Specific/Hydroponics/roses/blue.rsi
+  packetPrototype: BlueRoseSeeds
+  productPrototypes:
+  - FoodRoseBlue
+  lifespan: 55
+  maturation: 10
+  production: 10
+  yield: 4
+  potency: 10
+  idealLight: 8
+  growthStages: 3
+  chemicals:
+    Nutriment:
+      Min: 10
+      Max: 10
+      PotencyDivisor: 20
+    Romantacilin:
+      Min: 5
+      Max: 5
+      PotencyDivisor: 20
+    Ephedrine:
+      Min: 5
+      Max: 5
+      PotencyDivisor: 20
+
+- type: seed
+  id: PinkRose
+  name: seeds-rose-pink-name
+  noun: seeds-noun-seeds
+  displayName: seeds-rose-pink-display-name
+  plantRsi: _Euphoria/Objects/Specific/Hydroponics/roses/pink.rsi
+  packetPrototype: PinkRoseSeeds
+  productPrototypes:
+  - FoodRosePink
+  lifespan: 55
+  maturation: 10
+  production: 10
+  yield: 4
+  potency: 10
+  idealLight: 8
+  growthStages: 3
+  chemicals:
+    Nutriment:
+      Min: 10
+      Max: 10
+      PotencyDivisor: 20
+    Romantacilin:
+      Min: 5
+      Max: 5
+      PotencyDivisor: 20
+    Philterex:
+      Min: 5
+      Max: 5
+      PotencyDivisor: 20
+
+- type: seed
+  id: WhiteRose
+  name: seeds-rose-white-name
+  noun: seeds-noun-seeds
+  displayName: seeds-rose-white-display-name
+  plantRsi: _Euphoria/Objects/Specific/Hydroponics/roses/white.rsi
+  packetPrototype: WhiteRoseSeeds
+  productPrototypes:
+  - FoodRoseWhite
+  lifespan: 55
+  maturation: 10
+  production: 10
+  yield: 4
+  potency: 10
+  idealLight: 8
+  growthStages: 3
+  chemicals:
+    Nutriment:
+      Min: 10
+      Max: 10
+      PotencyDivisor: 20
+    Romantacilin:
+      Min: 5
+      Max: 5
+      PotencyDivisor: 20
+    Razorium:
+      Min: 3
+      Max: 3
+      PotencyDivisor: 20
+    Omnizine:
+      Min: 2
+      Max: 2
+      PotencyDivisor: 20
+

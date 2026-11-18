@@ -141,8 +141,106 @@
           Quantity: 10
   - type: Sprite
     sprite: _Euphoria/Objects/Specific/Hydroponics/roses/red.rsi
-  #- type: Produce
-  #  seedId: redrose
+  - type: Produce
+    seedId: RedRose
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Tag
+    tags:
+    - Flower
+
+- type: entity
+  name: rose
+  parent: FoodProduceBase
+  id: FoodRoseBlue
+  description: A flower often given as gifts between lovers. It smells quite pleasant. This one is a pretty sapphire colour.
+  components:
+  - type: Clothing
+    slots:
+    - HEAD
+    - MASK
+    quickEquip: false
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 22
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: Romantacilin
+          Quantity: 5
+        - ReagentId: Ephedrine # waltuh
+          Quantity: 5
+  - type: Sprite
+    sprite: _Euphoria/Objects/Specific/Hydroponics/roses/blue.rsi
+  - type: Produce
+    seedId: BlueRose
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Tag
+    tags:
+    - Flower
+
+- type: entity
+  name: rose
+  parent: FoodProduceBase
+  id: FoodRosePink
+  description: A flower often given as gifts between lovers. It smells quite pleasant. This one is a pretty rose quartz colour.
+  components:
+  - type: Clothing
+    slots:
+    - HEAD
+    - MASK
+    quickEquip: false
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 22
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: Romantacilin
+          Quantity: 5
+        - ReagentId: Philterex
+          Quantity: 5
+  - type: Sprite
+    sprite: _Euphoria/Objects/Specific/Hydroponics/roses/pink.rsi
+  - type: Produce
+    seedId: PinkROse
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Tag
+    tags:
+    - Flower
+
+- type: entity
+  name: rose
+  parent: FoodProduceBase
+  id: FoodRoseWhite
+  description: A flower often given as gifts between lovers. It smells quite pleasant. This one is a pretty diamond colour.
+  components:
+  - type: Clothing
+    slots:
+    - HEAD
+    - MASK
+    quickEquip: false
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 22
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: Omnizine
+          Quantity: 2
+        - ReagentId: Razorium
+          Quantity: 3
+        - ReagentId: Romantacilin
+          Quantity: 5
+  - type: Sprite
+    sprite: _Euphoria/Objects/Specific/Hydroponics/roses/white.rsi
+  - type: Produce
+    seedId: WhiteRose
   - type: Extractable
     grindableSolutionName: food
   - type: Tag
